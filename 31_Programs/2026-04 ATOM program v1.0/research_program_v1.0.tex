@@ -1,0 +1,128 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Geometry and spacing
+\usepackage[top=0.8in, bottom=0.8in, left=1in, right=1in]{geometry}
+\usepackage{setspace}
+\setstretch{1.05}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+% Fonts and typography
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{microtype}
+
+% Math
+\usepackage{amsmath,amssymb}
+
+% Graphics
+\usepackage{graphicx}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Colors for citations
+\usepackage{xcolor}
+
+% Bibliography
+\usepackage[numbers,compress]{natbib}
+\bibliographystyle{ieeetr}
+
+% Compact bibliography formatting
+\setlength{\bibsep}{1.3pt plus 0.3ex}  % Reduce space between entries
+
+% Adjust bibliography formatting to align with text margin
+\makeatletter
+\renewcommand\NAT@bibsetnum[1]{%
+   \settowidth\labelwidth{\@biblabel{#1}}%
+   \setlength{\leftmargin}{\labelwidth}% Set margin to label width
+   \setlength{\labelsep}{0.5em}% Small space after label
+   \setlength{\itemindent}{0pt}% No additional item indent
+   \setlength{\listparindent}{0pt}% No paragraph indent
+   \setlength{\itemsep}{\bibsep}% Use predefined separation
+   \setlength{\parsep}{0pt}%
+   \ifNAT@openbib
+     \addtolength{\leftmargin}{\bibindent}%
+     \setlength{\itemindent}{-\bibindent}%
+     \setlength{\listparindent}{\itemindent}%
+     \setlength{\parsep}{0pt}%
+   \fi
+}
+\makeatother
+
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+
+% Remove page numbers
+\pagestyle{empty}
+
+\renewcommand{\abstractname}{\vspace{-1em}}
+
+\begin{document}
+
+% Title Block
+\begin{center}
+  {\large \textbf{\textbf{ATOM}: \textbf{To}ward an \textbf{A}gent Foundation \textbf{M}odel}}\\
+  \textbf{Research Program v1.0}\\April 10, 2026\\
+  \small \emph{Author: Lancelot Da Costa}
+\end{center}
+
+\begin{abstract}
+    \vspace{-6pt}
+    \textbf{What:} The goal of ATOM is to develop an \textbf{agent foundation model}: A machine learning model capable of (1) interaction (action, planning), (2) sample-efficient, continual and open-ended learning, (3) generalization and adaptation under shifts, (4) alignment, safety and robustness.
+
+    \textbf{Why:} Current dominant approaches face critical limitations: neural net-based planning is largely amortized over training rather than adaptive at test time; LLMs are data-hungry and continual learning is a challenge; neural networks excel at interpolation but struggle to extrapolate under distribution shifts; and safety mechanisms remain brittle post-hoc patches.
+    
+    \textbf{How:} We aim to jointly address these challenges through \textbf{active world modeling}, where agents continually infer the states, parameters, and structural form of their world models while acting to maximize utility and information gain. Realizing this involves three technical thrusts: (1) universal world modeling using hierarchical state-space models; (2) model discovery on hierarchical model spaces; and (3) planning for model refinement, safety and control. As we explain below, these foundations should---in principle---enable the four criteria that define an agent foundation model. 
+    
+    \textbf{When:} With LLM scaling laws plateauing and the field returning to research mode, now is the opportune moment to develop this program.
+\end{abstract}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig_atom.png}
+    \caption{\small \textbf{Active World Modeling.} Agents perform hierarchical inference over heterogeneous spaces of state-space models ($m$), parameters ($\vartheta$), and states ($s$) while planning to maximize expected information gain, and optionally a utility function---supporting few-shot scientific-like world modeling and goal achievement.}
+    \label{fig:framework}
+    \vspace{-0.3em}
+\end{figure}
+
+\section*{Proposed Approach: Active World Modeling}
+
+Our proposed approach develops the foundations of \emph{active world modeling}: agents that jointly infer states, parameters, and structural form of their models while acting to gain information and maximize utility. Figure~\ref{fig:framework} summarizes this agenda: scalable hierarchical Bayesian inference over a heterogeneous space of structured world models, coupled with information-theoretic planning for informative data selection and control. Turning this conceptual picture into working agents raises three interlinked challenges for our research community: (1) \emph{universal world modeling} for complex, partially observed environments; (2) \emph{model discovery} on heterogeneous model spaces; and (3) \emph{planning for model refinement and control} under uncertainty, distribution shifts and safety constraints. The remainder of this section outlines these three thrusts, which together are designed to support agents with enhanced sample-efficiency, calibrated uncertainty, adaptation under distribution shifts, and few-shot scientific-like world modeling and goal achievement.
+
+\textbf{Aim 1: Universal world modeling.}
+We will explore hierarchies of discrete and continuous state-space models (e.g. extending POMDPs and rsLDS) as a unifying probabilistic backbone for complex, partially observed environments \cite{da_costa_natural_2025}. We will (1) develop efficient state and parameter variational inference methods for these hierarchies; (2) analyze the expressiveness of this model class mathematically through approximation theorems and empirically through multimodal generative modeling, identifying gaps; and (3) extend this model class as needed, e.g., to express latent non-Markovian SDEs~\cite{da_costa_toward_2024}. Beyond algorithms, we will study identifiability, consistency, and statistical-computational tradeoffs. This thrust connects work in probabilistic modeling, variational inference, and probabilistic programming.
+
+\textbf{Aim 2: Model discovery on heterogeneous model spaces.}
+World-modeling agents must reason not only about latent states and parameters, but also infer \emph{which} models best explain their data. We will develop model discovery methods based on agent--environment interaction data through probabilistic inference over the model spaces of Aim~1. We will explore generative flow networks to encode posterior uncertainty~\cite{bengio_gflownet_2023}, and priors grounded in core knowledge and minimum-description-length to support sample-efficient learning and generalization~\cite{da_costa_overfitting_nodate,pouncyInductiveBiasesTheorybased2022}. We will develop information geometry and dynamical-systems theory over heterogeneous spaces of probabilistic models---inherently stratified spaces---yielding novel geometry-informed variational inference methods for model discovery with guarantees on approximation quality and robustness~\cite{dacostaPossiblePrinciplesAligned2025}. This thrust bridges nonparametric inference and high-dimensional model selection with causal representation learning and probabilistic program induction.
+
+
+\textbf{Aim 3: Planning for model refinement, safety and control.}
+Given the state, parameter and model inferences from Aims~1--2, this thrust asks how agents should \emph{act} to optimally refine their models while satisfying task, safety, and reliability constraints. We will develop information-theoretic planning schemes where agents select actions to maximize information gain about states, parameters, and models, subject to utility. We will extend work at the intersection of reinforcement learning and nonparametric Bayes~\cite{doshi} and previous work on information-theoretic curiosity-driven planning~\cite{friston_sophisticated_2021,champion_branching_2021,paul_efficient_2023} with modern ideas in Bayesian experimental design~\cite{rainforthModernBayesianExperimental2023}. Key foci include regret and sample complexity bounds under partial observability, robustness under distribution shifts, and characterizing regimes where sample complexity approaches human-level on few-shot modeling tasks (e.g. ARC-3). This thrust bridges Bayesian experimental design, active learning, and model-based planning.
+
+\textbf{Impact.} These foundations support open-ended learning agents capable of autonomous scientific discovery, with enhanced sample efficiency, calibrated uncertainty that is essential for safety-critical applications, and adaptation under distribution shifts. They also support AI alignment research---framing alignment as modeling other agents' world models and utility functions, and incorporating those utilities as constraints in one's own~\cite{dacostaPossiblePrinciplesAligned2025}.
+
+\appendix
+
+\section*{Appendix: Key scientific background}
+
+\textbf{Stochastic Processes and Bayesian Mechanics.}
+The emerging field of \emph{Bayesian mechanics}, a probabilistic mechanics that links multipartite stochastic processes with Bayesian inference and decision theory \cite{da_costa_bayesian_2021,friston_free_2023}, shows that states or paths on one side of a boundary can be described as optimizing approximate posterior distributions about states or paths on the other, consistently with variational inference. This provides a mathematical physics formalization of popular principles for describing biological intelligence (including the Bayesian brain hypothesis and free-energy principle), which describe the brain as making sense of the world through approximate Bayesian inference. This viewpoint grounds approximate Bayesian inference as a physics and cognitive science-inspired approach for building AI systems.
+
+\textbf{Active Bayesian inference.}
+Building on Bayesian mechanics, the \emph{active Bayesian inference} framework formalizes agents through variational Bayesian inference for perception and learning, and Bayesian decision theory and experimental design for planning \cite{barp_geometric_2022}. Here, planning optimizes a combination of expected utility and information gain, incorporating uncertainty quantification and information-theoretic curiosity into reinforcement learning (RL). This framework is closely related to maximum-entropy RL, generalizing standard reward maximization objectives \cite{da_costa_reward_2023}. Analyses of existing robotics models illustrate how active Bayesian inference can enable safety-aware, robust, and adaptive behavior \cite{da_costa_how_2022}. Independently, a group from MIT showed that agents following these principles reach human-level sample efficiency in low-dimensional domains \cite{tsividis_human-level_2021}.
+
+\textbf{Emerging foundations for world-modeling agents.}
+To make these principles actionable in complex environments, recent work develops probabilistic foundations for \emph{world-modeling agents} via structured world models: agents that represent environments as hierarchical, partially observed stochastic processes rather than monolithic autoregressive ones. Recent work (1) identified a heterogeneous, provably expressive, and yet searchable space of Bayesian world models, formalized as hierarchies of discrete and continuous state-space models that extend partially observed Markov decision processes (POMDPs) and recurrent switching linear Gaussian dynamical systems (rsLDS) \cite{da_costa_toward_2024,da_costa_natural_2025}; (2) developed efficient search algorithms on a model subclass, enabling multimodal generative modeling (video, sound) with Bayesian hierarchical models \cite{friston_pixels_2024}; (3) proposed normative principles for world-modeling agents based on Bayesian inference on model spaces, information geometry, core knowledge and minimal description length priors, and Bayesian model reduction---which form the core of the approach proposed in this document \cite{dacostaPossiblePrinciplesAligned2025}.
+This strand connects to broader efforts in probabilistic modeling, Bayesian inference and causal representation learning.
+
+
+\bibliography{bib_cleaned}
+
+\end{document}
