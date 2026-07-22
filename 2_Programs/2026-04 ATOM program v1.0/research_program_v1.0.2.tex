@@ -68,20 +68,22 @@
 
 % Title Block
 \begin{center}
-  {\large \textbf{\textbf{ATOM}: \textbf{To}ward an \textbf{A}gent Foundation \textbf{M}odel}}\\
-  \textbf{Research Program v1.0}\\April 10, 2026\\
+  {\large \textbf{Toward Active World Modeling}}\\
+  {ATOM Research Program v1.0.2}\\July 06, 2026\\
+  % {\large \textbf{\textbf{ATOM Research Program v1.0}}}\\
+  % \textbf{Active World Modeling}\\April 10, 2026\\
   \small \emph{Author: Lancelot Da Costa}
 \end{center}
 
 \begin{abstract}
     \vspace{-6pt}
-    \textbf{What:} The goal of ATOM is to develop an \textbf{agent foundation model}: A machine learning model capable of (1) interaction (action, planning), (2) sample-efficient, continual and open-ended learning, (3) generalization and adaptation under distribution shifts, (4) alignment, safety and robustness.
+    \textbf{Context:} The goal of the ATOM research community is to develop an \textbf{agent foundation model}: A machine learning model capable of (1) interaction (action, planning), (2) sample-efficient, continual and open-ended learning, (3) generalization and adaptation under distribution shifts, (4) alignment, safety and robustness.
 
     \textbf{Why:} Current dominant approaches face critical limitations: neural net-based planning is largely amortized over training rather than adaptive at test time; LLMs are data-hungry and continual learning is a challenge; neural networks excel at interpolation but struggle to extrapolate under distribution shifts; and safety mechanisms remain brittle post-hoc patches.
     
-    \textbf{How:} We aim to jointly address these challenges through \textbf{active world modeling}, where agents continually infer the states, parameters, and structural form of their world models while acting to maximize utility and information gain. Realizing this involves three technical thrusts: (1) universal world modeling using hierarchical state-space models; (2) model discovery on hierarchical model spaces; and (3) planning for model refinement, safety and control. As we explain below, these foundations should---in principle---enable the four criteria that define an agent foundation model. 
+    \textbf{How:} We aim to jointly address these challenges through \textbf{active world modeling} under partial observability, where agents continually infer the states, parameters, and structural form of their world models while acting to maximize utility and information gain. Realizing this involves three interacting thrusts: (1) universal world modeling using hierarchical state-space models; (2) model discovery on hierarchical model spaces; and (3) planning for model refinement, safety and control. As we explain below, these foundations should advance the four criteria that define an agent foundation model. 
     
-    \textbf{When:} With LLM scaling laws plateauing and the field returning to research mode, now is the opportune moment to develop this program.
+    \textbf{When:} As interest in world modeling accelerates alongside continued progress in LLMs, now is the opportune moment to develop this program that emphasizes active and partially observed settings, which are currently underexplored.
 \end{abstract}
 
 \begin{figure}[h]
