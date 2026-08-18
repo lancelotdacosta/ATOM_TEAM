@@ -290,3 +290,11 @@
 - Technology that can be deployed anywhere and self-improves by gathering its own data
 - Not amortized behavior across pre-defined situations, but true novel input handling
 - On the fly model creation for wearable devices
+
+#### Following up on Pinductor
+- Use pinductor + prompt 'likely partially observed so observation model likely identity'
+- LLM guided planning for solving different problems based on Mathis' branch
+- Qwen 3.6 27B fits competition requirements - 1gpu 12hs
+- Look at frontier performance which already uses program synthesis:
+  - https://github.com/astroseger/arc-3-agents-baseline1
+  - https://schema-harness.github.io
