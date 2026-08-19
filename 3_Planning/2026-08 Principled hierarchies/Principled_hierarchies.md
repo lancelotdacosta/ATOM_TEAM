@@ -2,44 +2,44 @@
 
 ## Motivation
 Abstraction is currently a fundamental problem in machine learning and world models. We think that learning abstract representations will enable agents to:
-- achieve better generalization, since abstract representations generalize to new settings. 
-- learn faster, since having good abstractions reduces the number of parameters in the model. 
-- Achieve longer-term planning.
+- achieve better generalization, since abstract representations transfer to new settings;
+- learn faster, since good abstractions reduce the number of parameters in the model;
+- achieve longer-term planning.
 
-It's clear that abstraction should not be imposed a priori, but learned from the data. In an agentic world model setting, that is within the context of ATOM, abstractions are linked to hierarchical models. In a hierarchical world model, there are several layers, where the higher layers are more abstract and the lower layers are closer to the data. We can think of the higher layers as some kind of spatiotemporal coarse-graining of the lower levels.
+It's clear that abstraction should not be imposed a priori, but learned from the data. In an agentic world model setting, that is, within the context of ATOM, abstractions are linked to hierarchical models. In a hierarchical world model, there are several layers, where the higher layers are more abstract and the lower layers are closer to the data. We can think of the higher layers as some kind of spatiotemporal coarse-graining of the lower ones.
 
 ## Literature scope
-Having discussed the importance and the timeliness of learning good abstractions, we know that several fields have approached abstraction learning with different kinds of tools, and it's not clear how the frameworks relate. To name the main ones:
-- Hierarchical reinforcement learning, including 
-  - various frameworks such as the options framework and goal conditioned RL [chapter 7.4 murphyReinforcementLearningComprehensive2025]
-  - recent advances using hierarchical state-space models. The following three references give you three complementary approaches: [zhangHierarchicalPlanningLatent2026,ahmedSynthesizingWorldModels2025a,hafnerDeepHierarchicalPlanning2022]
-- Within causal modeling there are hierarchical causal models [weinsteinHierarchicalCausalModels2026]
-- Physics and complex systems modeling has a big literature on modeling 
+Having discussed the importance and the timeliness of learning good abstractions, we note that several fields have approached abstraction learning with different kinds of tools, and it's not clear how the frameworks relate. To name the main ones:
+- Hierarchical reinforcement learning, including
+  - various frameworks such as the options framework and goal-conditioned RL [murphyReinforcementLearningComprehensive2025, chapter 7.4]
+  - recent advances using hierarchical state-space models. The following three references give three complementary approaches: [zhangHierarchicalPlanningLatent2026; ahmedSynthesizingWorldModels2025; hafnerDeepHierarchicalPlanning2022]
+- Within causal modeling, there are hierarchical causal models [weinsteinHierarchicalCausalModels2026]
+- Physics and complex systems modeling has a large literature on modeling
   - multiscale processes [pavliotisMultiscaleMethodsAveraging2010]
   - spatial and temporal coarse-graining, e.g. the renormalization group
-- The literature on time series modeling using Bayesian hierarchical state-space models also treats this 
-- Related to this, is the literature on hierarchical active inference that has explored several hierarchical types of world models.
-  - Latent dynamic models where the latent state at the higher level is an initial condition for the latent trajectory at the lower level [Figure 2, catalRobotNavigationHierarchical2021]
-  - Latent dynamic models with a latent state at the higher level relates to the whole trajectory at the lower level [Figure 3, fristonPixelsPlanningScalefree2024]. The most relevant paper in this area is this [zaghwRenormalisingGenerativeModels2026]
+- The literature on time series modeling using Bayesian hierarchical state-space models also treats this.
+- Related to this is the literature on hierarchical active inference, which has explored several types of hierarchical world models.
+  - Latent dynamic models where the latent state at the higher level is an initial condition for the latent trajectory at the lower level [catalRobotNavigationHierarchical2021, Figure 2]
+  - Latent dynamic models where the latent state at the higher level relates to the whole trajectory at the lower level [fristonPixelsPlanningScalefree2024, Figure 3]. The most relevant paper in this area is [zaghwRenormalisingGenerativeModels2026]
 
 ## Goal of project
-Zooming back, ATOM seeks a space of hierarchical models that is efficiently expressive to express a wide range of worlds, but also sufficiently tractable so that each member of these hierarchical models can carry uncertainty to some extent, engage in inference, learning, and engage in information theoretic planning with information gain. See [costaNaturalBuildingBlocks2025] for a overarching vision paper in this area, and [dacostaPossiblePrinciplesAligned2024] for long version.
+Zooming back, ATOM seeks a space of hierarchical models that is expressive enough to capture a wide range of worlds, but also sufficiently tractable that each member of this space can carry uncertainty to some extent, engage in inference and learning, and engage in information-theoretic planning with information gain. See [costaNaturalBuildingBlocks2025] for an overarching vision paper in this area, and [dacostaPossiblePrinciplesAligned2024] for a longer version.
 
-The goal of this project is twofold. 
-- Theoretical: One, review the aforementioned literatures and assess the synergies and differences. The goal is to understand whether and how these approaches to abstraction learning are connected, deriving theoretical connections.
-- Practical: Second, to test the models and assess their learning speed divided by number of samples and compute, to find a space of hierarchical models that actually works well in practice.
+The goal of this project is twofold.
+- Theoretical: review the aforementioned literatures and assess their synergies and differences. The goal is to understand whether and how these approaches to abstraction learning are connected, deriving theoretical connections.
+- Practical: test the models and assess their learning speed per sample and per unit of compute, to find a space of hierarchical models that actually works well in practice.
 
 ## Suggested approach
-The suggested approach is to start reading and discuss state-of-the-art papers in hierarchical models of the different approaches, and at the same time implement those models in simple benchmarks to assess the learning speed versus samples and compute. Start with the application. First, think about the project towards the theory. 
+The suggested approach is to start reading and discussing state-of-the-art papers on hierarchical models from the different approaches, and at the same time implement those models on simple benchmarks to assess learning speed versus samples and compute. Start with the application, then work towards the theory. Depending on interest, the student can focus on the theoretical parts or the practical parts, or both.
 
-## Support team (tentative) 
-ATOM will connect you with many experts across the various fields in order to facilitate the research, in particular for
-- hierarchical RL experts would be Mohammed Abbas Ansari and Ali Gholamzadeh 
-- for hierarchical causal modeling TBD. 
-- For multi-scale processes it would be Lancelot Da Costa and, if necessary, Grigorios Pavliotis
-- For spatiotemporal coarse graining including renormalisation group it would be Nikos Papanikolaou and Simon Buchholz.
-- For hierarchical Bayesian state-space models it would be Conor Heins.
-- For hierarchical active inference, the first case, probably Connor Heinz or Wouter Nuijten, and the second case, Karim Zagwh and Andrew Pashea.
+## Support team (tentative)
+ATOM will connect you with experts across the various fields in order to facilitate the research, in particular:
+- for hierarchical RL, Mohammed Abbas Ansari and Ali Gholamzadeh
+- for hierarchical causal modeling, TBD
+- for multiscale processes, Lancelot Da Costa and, if necessary, Grigorios Pavliotis
+- for spatiotemporal coarse-graining, including the renormalisation group, Nikos Papanikolaou and Simon Buchholz
+- for hierarchical Bayesian state-space models, Conor Heins
+- for hierarchical active inference: in the first case, Conor Heins or Wouter Nuijten; in the second case, Karim Zaghw and Andrew Pashea.
 
 ## References
 
@@ -82,7 +82,7 @@ ATOM will connect you with many experts across the various fields in order to fa
 @misc{zaghwRenormalisingGenerativeModels2026,
   title = {Renormalising {{Generative Models}} for {{Active Inference}}: {{Foundations}}, {{Derivations}}, and {{Verification}}},
   shorttitle = {Renormalising {{Generative Models}} for {{Active Inference}}},
-  author = {Zaghw, Karim and Pashea, Andrew and Pritsch, Marc and Nuijten, Wouter and Friston, Karl and Costa, Lancelot Da},
+  author = {Zaghw, Karim and Pashea, Andrew and Pritsch, Marc and Nuijten, Wouter and Friston, Karl and {Da Costa}, Lancelot},
   year = 2026,
   month = aug,
   number = {arXiv:2608.09512},
@@ -208,12 +208,12 @@ ATOM will connect you with many experts across the various fields in order to fa
   author = {Pavliotis, Grigoris and Stuart, Andrew},
   year = 2010,
   month = nov,
-  edition = {Softcover reprint of hardcover 1st ed. 2008 \'edition},
+  edition = {Softcover reprint of hardcover 1st ed. 2008},
   publisher = {Springer},
   address = {New York, NY},
   abstract = {This introduction to multiscale methods explores both theory and applications. Examples show how to apply multiscale methods to solve a variety of problems. Exercises then enable readers to build their own skills and put them into practice.},
   isbn = {978-1-4419-2532-9},
-  langid = {Anglais}
+  langid = {english}
 }
 
 @misc{ahmedSynthesizingWorldModels2025,
